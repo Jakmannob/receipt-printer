@@ -1,0 +1,6 @@
+numpy
+pyautogui
+pygame
+sounddevice
+vosk
+zahlwort2num
