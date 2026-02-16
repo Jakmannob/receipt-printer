@@ -4,3 +4,7 @@ pygame
 sounddevice
 vosk
 zahlwort2num
+python-escpos
+pyusb
+pillow
+opencv-python
