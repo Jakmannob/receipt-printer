@@ -3,6 +3,9 @@
 A collection of scripts I use for my receipt printer project.
 The project is designed to work on Linux, specifically on the **Raspberry Pi** (4 or newer).
 
+In its current version, it can take an image with a webcam and print it with the thermal receipt printer.
+Sort of like a worse polaroid.
+
 ## Setup
 
 Setup is dependent on your USB devices, so you need to personalize it.
