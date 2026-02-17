@@ -36,11 +36,23 @@ def get_vid_pid(config):
 
 vid, pid = get_vid_pid(camera_config)
 symlink = camera_config["device"]
-rule = f'SUBSYSTEM=="video4linux", ATTRS{{idVendor}}=="{vid}", ATTRS{{idProduct}}=="{pid}", KERNEL=="video*", ATTR{{index}}=="0", SYMLINK+="{symlink.replace('/dev/', '')}"\n'
+rule = (
+    f'SUBSYSTEM=="video4linux", '
+    f'ATTRS{{idVendor}}=="{vid}", '
+    f'ATTRS{{idProduct}}=="{pid}", '
+    f'KERNEL=="video*", '
+    'ATTR{{index}}=="0", '
+    f'SYMLINK+="{symlink.replace('/dev/', '')}"\n'
+)
 write_rule(UDEV_CAMERA_RULES_FILE, rule)
 
 # ------------------------------ Printer config --------------------------------
 
 vid, pid = get_vid_pid(printer_config)
-rule = f'SUBSYSTEM=="usb", ATTR{{idVendor}}=="{vid}", ATTR{{idProduct}}=="{pid}", MODE="0666"\n'
+rule = (
+    f'SUBSYSTEM=="usb", '
+    f'ATTR{{idVendor}}=="{vid}", '
+    f'ATTR{{idProduct}}=="{pid}", '
+    'MODE="0666"\n'
+)
 write_rule(UDEV_PRINTER_RULES_FILE, rule)

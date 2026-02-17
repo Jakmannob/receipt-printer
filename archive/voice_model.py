@@ -1,18 +1,15 @@
-import os
-
-os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 import json
+import os
 import queue
 import shutil
-import time
 import urllib.request
 import zipfile
 
-import pyautogui
-import pygame
 import sounddevice as sd
 from vosk import KaldiRecognizer, Model
 from zahlwort2num import convert
+
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 
 INPUT_DEVICE_ID = 7
 MODEL_INSTALL_DIR = "model"
@@ -22,7 +19,8 @@ WAIT_FOR_AUDIO = True
 
 if INPUT_DEVICE_ID < 0:
     print(
-        "You need to set your INPUT_DEVICE_ID at the start of the script. Run print_mic_ids.py to list possible mics."
+        "You need to set your INPUT_DEVICE_ID at the start of the script. "
+        "Run print_mic_ids.py to list possible mics."
     )
     exit(1)
 
@@ -82,7 +80,7 @@ if __name__ == "__main__":
     model = Model(model_path())
     q = queue.Queue()
 
-    def callback(indata, frames, time, status):
+    def callback(indata, frames, timestamp, status):
         q.put(bytes(indata))
 
     with sd.RawInputStream(
