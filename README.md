@@ -13,13 +13,13 @@ Connect both your **thermal POS printer** and your **USB camera** to your RPi an
 You first need to find out the USB information of your devices.
 Run:
 
-```sh
+```console
 $ lsusb
 ```
 
 And find the correct lines for your devices, which should look like:
 
-```sh
+```console
 Bus xxx Device xxx: ID <VENDOR_ID>:<PRODUCT_ID> <NAME>
 ```
 
@@ -32,7 +32,7 @@ The device setup will create a system symlink to your camera, you can customize 
 To install, you then must set up the virtual environment and udev rules for the USB devices.
 Run:
 
-```sh
+```console
 $ setup.sh
 $ sudo install.sh
 ```
@@ -41,6 +41,6 @@ $ sudo install.sh
 
 Execute:
 
-```sh
+```console
 $ run.sh
 ```
