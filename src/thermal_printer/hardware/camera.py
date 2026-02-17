@@ -23,9 +23,13 @@ class Camera:
             )
         return dev
 
-    def take_transform_and_save_image(self, alpha=1.2, beta=40, file_name="temp.jpg"):
+    def take_transform_and_save_image(
+        self, alpha=1.2, beta=40, bw_threshold=-1, file_name="temp.jpg"
+    ):
         frame = self.take_image()
-        transformed = self.transform_image(frame, alpha=alpha, beta=beta)
+        transformed = self.transform_image(
+            frame, alpha=alpha, beta=beta, bw_threshold=bw_threshold
+        )
         return self.save_image(transformed, file_name=file_name)
 
     def take_image(self):
