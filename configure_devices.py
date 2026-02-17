@@ -1,7 +1,6 @@
 import tomllib
 import os
 import sys
-import subprocess
 
 
 if os.geteuid() != 0:
@@ -44,11 +43,3 @@ write_rule(UDEV_CAMERA_RULES_FILE, rule)
 vid, pid = get_vid_pid(printer_config)
 rule = f'SUBSYSTEM=="usb", ATTR{{idVendor}}=="{vid}", ATTR{{idProduct}}=="{pid}", MODE="0666"\n'
 write_rule(UDEV_PRINTER_RULES_FILE, rule)
-
-# ------------------------------- Saving rules ---------------------------------
-
-# Reload udev rules and trigger
-subprocess.run(['udevadm', 'control', '--reload-rules'], check=True)
-subprocess.run(['udevadm', 'trigger'], check=True)
-
-print('Udev rules reloaded and devices triggered.')

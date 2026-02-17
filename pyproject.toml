@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thermal_printer"
+version = "0.1.0"
+description = "A package containing different utilities for controlling a thermal receipt printer"
+authors = [
+    { name = "Jakob Eigenmann" }
+]
+requires-python = ">=3.11"
+
+dependencies = [
+    "opencv-python",
+    "Pillow",
+    "python-escpos",
+    "pyusb"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
